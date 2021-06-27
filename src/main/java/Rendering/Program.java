@@ -14,26 +14,41 @@ import Util.Pair;
 
 import javax.swing.*;
 
+/**
+ * This handles the little window you see, and updating it every "frame"
+ * You can edit this to change framerate if you would like
+ */
+
 public class Program {
 
     long timeSinceLastUpdate = 0;
-    private final long FRAME_TIME = (long)((1.0/1.0)*1000000000.0); // set the denominator to desired frame rate
+    private final long FRAME_TIME = (long)((1.0/10)*1000000000.0); // set the denominator to desired frame rate
 
     private int width;
     private int height;
     private Calculator calc;
 
+    /**
+     * OPEN THE GAME
+     * @param args
+     */
     public static void main(String[] args){
         Program program = new Program();
     }
 
+    /**
+     * Default constructor, all it does is call the start method
+     */
     public Program(){
         onUserStart();
     }
 
+    /**
+     * Initiliazes stuff. This is not fun to code.
+     */
     private void onUserStart(){
-        width = 50;
-        height = 50;
+        width = 100;
+        height = 100;
         calc = new Calculator(width,height);
         Logic programLogic = new Logic(width, height);
         int pixelWidth = 10;
@@ -55,11 +70,16 @@ public class Program {
         }
     }
 
+    /**
+     * This runs every frame.
+     * @param pixels the pixel panel for making graphics go burr
+     * @param timeEllapsed time ellapsed since last frame
+     * @param programLogic the Logic object that make all the logical stuff happen
+     */
     private void onUserUpdate(PixelPanel pixels, long timeEllapsed, Logic programLogic){
         if(timeSinceLastUpdate < FRAME_TIME){
             timeSinceLastUpdate += timeEllapsed;
         } else {
-            System.out.println("NEXT");
             timeSinceLastUpdate = 0;
             Pair coords;
             programLogic.timeStep();

@@ -15,12 +15,19 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+/**
+ *
+ * The Pixel is just that, a single rectangular pixel on the screen
+ * I designed it such that it is actually a javax rectangle, so it can be bigger than
+ * 1 pixel on the monitor.
+ * Used by PixelPanel to display our lovely simulation
+ *
+ */
 
 public class Pixel extends Component{
 
     private final int x;
     private final int y;
-    private final Pair coords;
     int colourID;
     Color[] colors = new Color[5];
     private final int w;
@@ -28,18 +35,17 @@ public class Pixel extends Component{
 
     /**
      * Constructor for fun stuff Shows ya what colors should be
-     * @param x
-     * @param y
-     * @param w
-     * @param h
-     * @param colourID
+     * @param x x position, with 0 being left most
+     * @param y y position, with 0 being top most
+     * @param w width of pixel
+     * @param h height of pixel
+     * @param colourID index of color array (see the method below what what colour is what index)
      */
     Pixel(int x, int y, int w, int h, int colourID){
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        coords = new Pair(x,y);
         this.colourID = colourID;
         colors[0] = Color.BLACK;
         colors[1] = Color.RED;
@@ -48,14 +54,15 @@ public class Pixel extends Component{
         colors[4] = Color.WHITE;
     }
 
+    /**
+     * Sets the colour of the pixel
+     * @param colourID The id that represents the color
+     */
+
     public void setColour(int colourID){
         if(colourID <= 4 && colourID >= 0){
             this.colourID = colourID;
         }
-    }
-
-    public Pair getCoords(){
-        return coords;
     }
 
     /**

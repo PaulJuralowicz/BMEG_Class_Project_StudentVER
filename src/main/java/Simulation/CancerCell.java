@@ -4,16 +4,37 @@ import Util.Pair;
 
 import java.util.ArrayList;
 
+/**
+ *This is a cancer cell. It is the most complex cell as it can attack tissue or immune cells, or grow into a dead cell.
+ * For attacking tissue, it is a 1 hit replace it with a dead cell.
+ * Immune cells are cooler. Each hit from a cancer cell lowers its strength by 1. When an immune cell reaches 0 strength
+ * it dies!
+ *
+ * It has a priority of action. If it can grow, it will grow. If it can kill a tissue cell, it will do that. Why?
+ * Easiest way to grow is to kill a week tissue cell. If no other option, will attack immune cells. Path of
+ * least resistance to growing basically.
+ *
+ * Growing means turning a dead cell into a CancerCell.
+ */
+
 public class CancerCell extends Cell{
 
     //green
 
+    /**
+     * Default constructor. Just places a cancer cell somewhere
+     * @param coords the coords it is located at.
+     */
     CancerCell(Pair coords){
         super(3, 1, coords);
     }
 
+    /**
+     * The big interaction method that is basically the action for the time step.
+     * @param neighbors arraylist of all cells. Just keep stuff open for the student.
+     */
     @Override
-    public void interactNeighbors(ArrayList<Cell> neighbors, int width, int height){
+    public void interactNeighbors(ArrayList<Cell> neighbors){
         int index; //negative 1 cause we are a cancer cell, don't want to count twice
         ArrayList<Pair> dead = new ArrayList<>();
         ArrayList<Pair> tissue = new ArrayList<>();
@@ -21,7 +42,7 @@ public class CancerCell extends Cell{
         for(int x = -1; x< 2; x++){
             for(int y = -1; y < 2; y++){
                 index = calc.indexFromCoord(coords.x - x, coords.y - y);
-                if (index >= 0 && index < width*height){
+                if (index >= 0 && index < neighbors.size()){
                     if (neighbors.get(index).id == 0){
                         dead.add(calc.coordFromIndex(index));
                     } else if (neighbors.get(index).id == 1){
