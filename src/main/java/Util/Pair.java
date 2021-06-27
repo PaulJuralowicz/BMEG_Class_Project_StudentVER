@@ -6,7 +6,7 @@
  *
  */
 
-package Rendering;
+package Util;
 
 public class Pair {
     public int x;

@@ -8,6 +8,8 @@
 
 package Rendering;
 
+import Util.Pair;
+
 import java.awt.Component;
 import java.awt.Color;
 import java.awt.Graphics;

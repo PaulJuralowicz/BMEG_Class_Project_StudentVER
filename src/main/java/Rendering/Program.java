@@ -9,16 +9,19 @@
 package Rendering;
 
 import Simulation.Logic;
+import Util.Calculator;
+import Util.Pair;
 
 import javax.swing.*;
 
 public class Program {
 
     long timeSinceLastUpdate = 0;
-    private final long FRAME_TIME = (1/30)*1000000000; // set the denominator to desired frame rate
+    private final long FRAME_TIME = (long)((1.0/3.0)*1000000000.0); // set the denominator to desired frame rate
 
     private int width;
     private int height;
+    private Calculator calc;
 
     public static void main(String[] args){
         Program program = new Program();
@@ -28,20 +31,10 @@ public class Program {
         onUserStart();
     }
 
-    private int indexFromCoord(int x, int y){
-        return width*y + x;
-    }
-
-    private Pair coordFromIndex(int i){
-        Pair coords = new Pair();
-        coords.x = i%width;
-        coords.y = (i - coords.x)/width;
-        return coords;
-    }
-
     private void onUserStart(){
         width = 50;
         height = 50;
+        calc = new Calculator(width,height);
         Logic programLogic = new Logic(width, height);
         int pixelWidth = 10;
         int pixelHeight = 10;
@@ -51,6 +44,7 @@ public class Program {
         PixelPanel pixels = new PixelPanel(width, height, pixelWidth, pixelHeight);
         frame.getContentPane().add(pixels);
         frame.setVisible(true);
+        pixels.repaint();
         long currTime = 0;
         long nextTime = 0;
         while(true){
@@ -65,12 +59,13 @@ public class Program {
         if(timeSinceLastUpdate < FRAME_TIME){
             timeSinceLastUpdate += timeEllapsed;
         } else {
+            System.out.println("NEXT");
             timeSinceLastUpdate = 0;
             Pair coords;
             programLogic.timeStep();
             for(int i = 0; i < pixels.canvasSize(); i++){
-                coords = coordFromIndex(i);
-                pixels.getPixel(coords.x, coords.y).setColour(programLogic.setColour(coords.x,coords.y));
+                coords = calc.coordFromIndex(i);
+                pixels.getPixel(coords.x, coords.y).setColour(programLogic.setColour(coords));
             }
         }
     }
