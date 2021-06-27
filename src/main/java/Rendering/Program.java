@@ -17,7 +17,7 @@ import javax.swing.*;
 public class Program {
 
     long timeSinceLastUpdate = 0;
-    private final long FRAME_TIME = (long)((1.0/3.0)*1000000000.0); // set the denominator to desired frame rate
+    private final long FRAME_TIME = (long)((1.0/1.0)*1000000000.0); // set the denominator to desired frame rate
 
     private int width;
     private int height;
