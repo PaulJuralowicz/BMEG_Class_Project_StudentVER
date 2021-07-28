@@ -28,7 +28,7 @@ public class TissueCell extends Cell{
      */
     @Override
     public void interactNeighbors(ArrayList<Cell> neighbors){
-        int index; //negative 1 cause we are a cancer cell, don't want to count twice
+        int index;
         ArrayList<Pair> dead = new ArrayList<>();
         for(int x = -1; x< 2; x++) {
             for (int y = -1; y < 2; y++) {
