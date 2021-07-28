@@ -42,7 +42,7 @@ public class CancerCell extends Cell{
         ArrayList<Pair> immune = new ArrayList<>();
         for(int x = -1; x< 2; x++){
             for(int y = -1; y < 2; y++){
-                index = Calculator.indexFromCoord(coords.x - x, coords.y - y);
+                index = Calculator.indexFromCoord(coords.getX() - x, coords.getY() - y);
                 if (index >= 0 && index < neighbors.size()){
                     if (neighbors.get(index).id == 0){
                         dead.add(Calculator.coordFromIndex(index));

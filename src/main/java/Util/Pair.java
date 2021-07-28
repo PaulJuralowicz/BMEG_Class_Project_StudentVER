@@ -13,8 +13,8 @@ package Util;
  * a bit silly to have getters and setters.
  */
 public class Pair {
-    public int x; // x pos
-    public int y; //y pos
+    private int x; // x pos
+    private int y; //y pos
 
     /**
      * Constructors
@@ -32,4 +32,21 @@ public class Pair {
     public Pair(){
         this(0,0);
     }
+
+    /**
+     * Gives x coord
+     * @return x
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * give y coord
+     * @return y
+     */
+    public int getY() {
+        return y;
+    }
+
 }

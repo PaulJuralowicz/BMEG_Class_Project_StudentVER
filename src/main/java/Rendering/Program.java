@@ -88,7 +88,7 @@ public class Program {
             programLogic.timeStep();
             for(int i = 0; i < pixels.canvasSize(); i++){
                 coords = Calculator.coordFromIndex(i);
-                pixels.getPixel(coords.x, coords.y).setColour(programLogic.setColour(coords));
+                pixels.getPixel(coords.getX(), coords.getY()).setColour(programLogic.setColour(coords));
             }
         }
     }

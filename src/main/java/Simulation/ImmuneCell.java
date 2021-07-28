@@ -31,7 +31,7 @@ public class ImmuneCell extends Cell{
         ArrayList<Pair> cancer = new ArrayList<>();
         for(int x = -1; x< 2; x++){
             for(int y = -1; y < 2; y++){
-                index = Calculator.indexFromCoord(coords.x - x, coords.y - y);
+                index = Calculator.indexFromCoord(coords.getX() - x, coords.getY() - y);
                 if (index >= 0 && index < neighbors.size()){
                     if (neighbors.get(index).id == 3){
                         cancer.add(Calculator.coordFromIndex(index));
@@ -43,7 +43,7 @@ public class ImmuneCell extends Cell{
         while(cancer.size() != 0 && keepFighting){
             Pair toFight = cancer.get((int) (Math.random() * 100) % cancer.size());
             cancer.remove(toFight);
-            neighbors.set(calc.indexFromCoord(toFight), new TissueCell(toFight)); // would make more sense to change to dead cell, but this keeps things interesting...
+            neighbors.set(Calculator.indexFromCoord(toFight), new TissueCell(toFight)); // would make more sense to change to dead cell, but this keeps things interesting...
             if(Math.random() > 0.5){
                 keepFighting = false;
             }

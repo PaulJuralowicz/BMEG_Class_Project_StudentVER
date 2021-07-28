@@ -41,7 +41,7 @@ public class PixelPanel extends JPanel {
         Pair currCoords;
         for(int i = 0; i < width*height; i++){
             currCoords = calc.coordFromIndex(i);
-            pixels.add(new Pixel(currCoords.x*pixelWidth, currCoords.y*pixelHeight,pixelWidth, pixelHeight, 0));
+            pixels.add(new Pixel(currCoords.getX()*pixelWidth, currCoords.getY()*pixelHeight,pixelWidth, pixelHeight, 0));
         }
     }
 

@@ -42,7 +42,7 @@ public class Calculator {
      * @return index in an array that corresponds to the coords
      */
     public static int indexFromCoord(Pair coord){
-        return indexFromCoord(coord.x, coord.y);
+        return indexFromCoord(coord.getX(), coord.getY());
     }
 
     /**
@@ -52,9 +52,6 @@ public class Calculator {
      * @return Pair that is the coordinates of a cell in 2D space
      */
     public static Pair coordFromIndex(int i){
-        Pair coords = new Pair();
-        coords.x = i%width;
-        coords.y = (i - coords.x)/width;
-        return coords;
+        return new Pair(i%width, (i - (i%width))/width);
     }
 }
