@@ -1,5 +1,6 @@
 package Simulation;
 
+import Util.Calculator;
 import Util.Pair;
 
 import java.util.ArrayList;
@@ -30,10 +31,10 @@ public class ImmuneCell extends Cell{
         ArrayList<Pair> cancer = new ArrayList<>();
         for(int x = -1; x< 2; x++){
             for(int y = -1; y < 2; y++){
-                index = calc.indexFromCoord(coords.x - x, coords.y - y);
+                index = Calculator.indexFromCoord(coords.x - x, coords.y - y);
                 if (index >= 0 && index < neighbors.size()){
                     if (neighbors.get(index).id == 3){
-                        cancer.add(calc.coordFromIndex(index));
+                        cancer.add(Calculator.coordFromIndex(index));
                     }
                 }
             }

@@ -22,11 +22,10 @@ import javax.swing.*;
 public class Program {
 
     long timeSinceLastUpdate = 0;
-    private final long FRAME_TIME = (long)((1.0/10)*1000000000.0); // set the denominator to desired frame rate
+    private final long FRAME_TIME = (long)((1.0/10.0)*1000000000.0); // set the denominator to desired frame rate (10 by default)
 
     private int width;
     private int height;
-    private Calculator calc;
 
     /**
      * OPEN THE GAME
@@ -44,12 +43,12 @@ public class Program {
     }
 
     /**
-     * Initiliazes stuff. This is not fun to code.
+     * Initiliazes stuff rendiering an each pixel on the screen. You can modify
+     * the width and height if you want, but this will increase sim time!
      */
     private void onUserStart(){
         width = 100;
         height = 100;
-        calc = new Calculator(width,height);
         Logic programLogic = new Logic(width, height);
         int pixelWidth = 10;
         int pixelHeight = 10;
@@ -84,7 +83,7 @@ public class Program {
             Pair coords;
             programLogic.timeStep();
             for(int i = 0; i < pixels.canvasSize(); i++){
-                coords = calc.coordFromIndex(i);
+                coords = Calculator.coordFromIndex(i);
                 pixels.getPixel(coords.x, coords.y).setColour(programLogic.setColour(coords));
             }
         }

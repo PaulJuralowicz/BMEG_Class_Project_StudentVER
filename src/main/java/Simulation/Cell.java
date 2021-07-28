@@ -33,6 +33,5 @@ public class Cell {
      * @param neighbors all the cells in the world.
      */
     public void interactNeighbors(ArrayList<Cell> neighbors){
-        return;
     }
 }

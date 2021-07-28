@@ -1,5 +1,6 @@
 package Simulation;
 
+import Util.Calculator;
 import Util.Pair;
 
 import java.util.ArrayList;
@@ -31,10 +32,10 @@ public class TissueCell extends Cell{
         ArrayList<Pair> dead = new ArrayList<>();
         for(int x = -1; x< 2; x++) {
             for (int y = -1; y < 2; y++) {
-                index = calc.indexFromCoord(coords.x - x, coords.y - y);
+                index = Calculator.indexFromCoord(coords.x - x, coords.y - y);
                 if (index >= 0 && index < neighbors.size()) {
                     if (neighbors.get(index).id == 0) {
-                        dead.add(calc.coordFromIndex(index));
+                        dead.add(Calculator.coordFromIndex(index));
                     }
                 }
             }
@@ -42,7 +43,7 @@ public class TissueCell extends Cell{
         if (dead.size() > 0 && Math.random() > 0.7){ //30% chance it actually will grow
             //pick random and grow
             Pair toSpawn = dead.get((int) (Math.random() * 100) % dead.size());
-            neighbors.set(calc.indexFromCoord(toSpawn), new TissueCell(toSpawn));
+            neighbors.set(Calculator.indexFromCoord(toSpawn), new TissueCell(toSpawn));
         }
     }
 }
