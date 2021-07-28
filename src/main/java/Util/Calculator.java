@@ -3,7 +3,10 @@ package Util;
 /**
  * Utility class that can do calcs for you.
  *
- * I think as long as you initialize it once somewhere anything can use it, but I am not quite sure...
+ * Initiliazed at the start, you can call any of the methods by just doing Calculator.method();
+ *
+ *
+ * Don't edit this file
  */
 public class Calculator {
     private static int width; //number of cells in x dir

@@ -29,7 +29,7 @@ public class Pixel extends Component{
     private final int x;
     private final int y;
     int colourID;
-    Color[] colors = new Color[5];
+    Color[] colors = new Color[10];
     private final int w;
     private final int h;
 
@@ -52,6 +52,12 @@ public class Pixel extends Component{
         colors[2] = Color.BLUE;
         colors[3] = Color.GREEN;
         colors[4] = Color.WHITE;
+        colors[5] = Color.CYAN;
+        colors[6] = Color.MAGENTA;
+        colors[7] = Color.ORANGE;
+        colors[8] = Color.YELLOW;
+        colors[9] = Color.LIGHT_GRAY;
+        //https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html
     }
 
     /**

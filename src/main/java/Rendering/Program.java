@@ -1,7 +1,7 @@
 /**
  *
  *
- * DONT TOUCH THIS PLEASE
+ * DONT TOUCH THIS PLEASE, UNLESS YOU WANT TO EDIT THE WIDTH / HEIGHT OF THE PROGRAM
  *
  *
  */
@@ -47,11 +47,15 @@ public class Program {
      * the width and height if you want, but this will increase sim time!
      */
     private void onUserStart(){
+        // YOU CAN EDIT THESE
         width = 100;
         height = 100;
+        //Tada
         Logic programLogic = new Logic(width, height);
+        // You can mess with these but it might freak out
         int pixelWidth = 10;
         int pixelHeight = 10;
+        // Ok you've had enough fun
         javax.swing.JFrame frame = new javax.swing.JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize((width+2)*pixelWidth, (height+4)*pixelHeight);
